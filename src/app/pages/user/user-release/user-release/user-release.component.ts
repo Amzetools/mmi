@@ -214,12 +214,7 @@ export class UserReleaseComponent  implements OnInit {
     return column.property;
   }
 
-  onLabelChange(change: MatSelectChange, row: Customer) {
-    const index = this.customers.findIndex(c => c === row);
-    this.customers[index].labels = change.value;
-    this.subject$.next(this.customers);
-  }
-
+ 
 }
 function startWith(arg0: string): import("rxjs").OperatorFunction<any, unknown> {
   throw new Error('Function not implemented.');

@@ -66,8 +66,8 @@ export class ProductListComponent implements OnInit {
     this.productService.getProducts().subscribe((product) => {
       if(product.data){
         this.isLoading = false
-        this.products = product.data
-        console.log(this.products)
+        this.products = product.data.fieldData
+        console.log(this.products,"here")
         this.cd.markForCheck();
       }
     })

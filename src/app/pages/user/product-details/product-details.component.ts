@@ -26,12 +26,12 @@ export class ProductDetailsComponent  implements OnInit {
   }
   ngOnInit(): void {
     this.id= this.route.snapshot.params['id']
-    console.log("Ye rhi ID Bey",this.id)
+
     this.productService.getSingleProduct(this.id).subscribe((res) => {
           if(res.data) {
             this.isLoading = false;
-            this.productDetail = res.data;
-            console.log(this.productDetail)
+            this.productDetail = res.data.fieldData[0];
+            console.log(this.productDetail,"here")
           }
     })
   }

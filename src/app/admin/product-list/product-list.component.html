@@ -55,17 +55,17 @@
         <div class="p-gutter grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 container">
             <div class="card overflow-hidden" *ngFor="let product of products">
                 <div class="p-4 text-center hover:bg-hover trans-ease-out cursor-pointer relative" matRipple>
-                    <img src="{{product.fieldData.image}}" class="avatar h-24 w-24 mx-auto">
+                    <img src="{{product.image}}" class="avatar h-24 w-24 mx-auto">
 
-                    <h2 class="title mb-1 mt-3">{{product.fieldData.description}}</h2>
+                    <h2 class="title mb-1 mt-3">{{product.description}}</h2>
                     <div class="body-2 text-secondary flex items-center justify-center">
                         <mat-icon class="ltr:mr-1 rtl:ml-1 icon-xs" svgIcon="mat:label"></mat-icon>
-                        <span>{{product.fieldData.sku}}</span>
+                        <span>{{product.sku}}</span>
                     </div>
 
                     <div class="body-2 text-secondary flex items-center justify-center">
                         <mat-icon class="ltr:mr-1 rtl:ml-1 icon-xs" svgIcon="mat:category"></mat-icon>
-                        <span>Stock: {{product.fieldData.unitsInStock}}</span>
+                        <span>Stock: {{product.unitsInStock}}</span>
                     </div>
 
                     <button class="absolute top-2 right-2" mat-icon-button
@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="bg-app-bar p-2 flex items-center justify-around">
-                    <button color="primary" (click)="productDetails(product.fieldData.idProduct)" mat-stroked-button type="button">View Product</button>  
+                    <button color="primary" (click)="productDetails(product.sku)" mat-stroked-button type="button">View Product</button>  
                 </div>
             </div>
         </div>

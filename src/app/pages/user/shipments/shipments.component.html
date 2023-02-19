@@ -40,107 +40,39 @@
       <span class="flex-1"></span>
     </div>
 
-    <table @stagger [dataSource]="dataSource" class="w-full" mat-table matSort>
-
-      <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
-
-      <!-- Checkbox Column -->
-      <ng-container matColumnDef="checkbox">
-        <th *matHeaderCellDef mat-header-cell>
-          <mat-checkbox (change)="$event ? masterToggle() : null"
-                        [checked]="selection.hasValue() && isAllSelected()"
-                        [indeterminate]="selection.hasValue() && !isAllSelected()"
-                        color="primary">
-          </mat-checkbox>
-        </th>
-        <td *matCellDef="let row" class="w-4" mat-cell>
-          <mat-checkbox (change)="$event ? selection.toggle(row) : null"
-
-                        [checked]="selection.isSelected(row)"
-                        color="primary">
-          </mat-checkbox>
-        </td>
-      </ng-container>
-
-      <!-- Image Column -->
-      <ng-container matColumnDef="image">
-        <th *matHeaderCellDef class="uppercase" mat-header-cell mat-sort-header>Image</th>
-        <td *matCellDef="let row" class="w-8 min-w-8 pr-0" mat-cell>
-          <img [src]="row['imageSrc']" class="avatar h-8 w-8 align-middle">
-        </td>
-      </ng-container>
-
-      <!-- Text Columns -->
-      <ng-container *ngFor="let column of columns; trackBy: trackByProperty">
-        <ng-container *ngIf="column.type === 'text'" [matColumnDef]="column.property">
-          <th *matHeaderCellDef class="uppercase" mat-header-cell mat-sort-header> {{ column.label }}</th>
-          <td *matCellDef="let row" [ngClass]="column.cssClasses" mat-cell>{{ row[column.property] }}</td>
-        </ng-container>
-      </ng-container>
-
-      <!-- Contact Column -->
-      <ng-container matColumnDef="contact">
-        <th *matHeaderCellDef mat-header-cell mat-sort-header></th>
-        <td *matCellDef="let row" mat-cell>
-          <div class="flex">
-            <a
-               class="w-8 h-8 leading-none flex items-center justify-center hover:bg-hover text-primary bg-primary/10"
-               mat-icon-button>
-              <mat-icon class="icon-sm" svgIcon="mat:phone"></mat-icon>
-            </a>
-
-            <a
-               class="w-8 h-8 leading-none flex items-center justify-center ml-1 hover:bg-hover text-teal bg-teal-light"
-               mat-icon-button>
-              <mat-icon class="icon-sm" svgIcon="mat:mail"></mat-icon>
-            </a>
-
-            <a
-               class="w-8 h-8 leading-none flex items-center justify-center ml-1 hover:bg-hover text-green bg-green-light"
-               mat-icon-button>
-              <mat-icon class="icon-sm" svgIcon="mat:map"></mat-icon>
-            </a>
-          </div>
-        </td>
-      </ng-container>
-
-      <!-- Label Column -->
-      <ng-container matColumnDef="labels">
-        <th *matHeaderCellDef class="uppercase" mat-header-cell mat-sort-header>Labels</th>
-        <td *matCellDef="let row" mat-cell>
-          <div  class="flex items-center gap-1">
-            <div *ngFor="let label of row.labels"
-                 [ngClass]="[label.textClass, label.bgClass]"
-                 class="rounded px-2 py-1 font-medium text-xs flex-none">
-              {{ label.text }}
-            </div>
-          </div>
-        </td>
-      </ng-container>
-
-      <!-- Action Column -->
-      <ng-container matColumnDef="actions">
-        <th *matHeaderCellDef mat-header-cell mat-sort-header>Options</th>
-        <td *matCellDef="let row" class="w-10 text-secondary" mat-cell>
-          <button
-                  [matMenuTriggerData]="{ customer: row }"
-                  [matMenuTriggerFor]="actionsMenu"
-                  mat-icon-button
-                  type="button">
-            <mat-icon svgIcon="mat:more_horiz"></mat-icon>
-          </button>
-        </td>
-      </ng-container>
-
-      <tr *matHeaderRowDef="visibleColumns" mat-header-row></tr>
-      <tr *matRowDef="let row; columns: visibleColumns;"
-          @fadeInUp
-          class="hover:bg-hover trans-ease-out cursor-pointer"
-          mat-row></tr>
-          <!--- Note: Will use the below Line to view product details in the above <tr>" -->
-          <!-- (click)="updateCustomer(row)" -->
-    </table>
+    <div class="card sm:col-span-full p-5">
+      <table class="w-full p-4">
+    <tr class="h-10 bg-gray-200"> 
+      <th>Shipment No</th>
+      <th>Customer</th>
+      <th>Phone</th>
+      <th>Shipping code</th>
+      <th>Action</th>
+    </tr>
+    <tr class="text-center h-10 border-t-2 border-gray-100" *ngFor="let shipment of shipments">
+      <td class="flex justify-center ">
+        {{shipment.shipping_number}}
+      </td>
+      <td class="w-20 " style="white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;">{{shipment.customer_c}}</td>
+      <td>{{shipment.shipto_phone}}</td>
+      <td>{{shipment.shipto_code}}</td>
+      <td><button mat-button [matMenuTriggerFor]="menu">View</button></td>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="shipmentDetails(shipment.shipping_number)">
+          <span>View Shipment Deatils</span>
+        </button>
+  
+      </mat-menu>
+    </tr>
+  
+      </table>
+        
+  
+    
+     
+    </div>
 
     <mat-paginator [pageSizeOptions]="pageSizeOptions" [pageSize]="pageSize" class="sticky left-0"></mat-paginator>
   </div>

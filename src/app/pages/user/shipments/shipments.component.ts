@@ -1,7 +1,7 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import { defaultChartOptions } from '../../../@vex/utils/default-chart-options';
-import { Order, tableSalesData } from '../../../static-data/table-sales-data';
-import { TableColumn } from '../../../@vex/interfaces/table-column.interface';
+import { defaultChartOptions } from '../../../../@vex/utils/default-chart-options';
+import { Order, tableSalesData } from '../../../../static-data/table-sales-data';
+import { TableColumn } from '../../../../@vex/interfaces/table-column.interface';
 import { SelectionModel } from '@angular/cdk/collections';
 import { UntypedFormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -11,13 +11,15 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { untilDestroyed } from '@ngneat/until-destroy';
 import { ReplaySubject, Observable, of, filter } from 'rxjs';
-import { aioTableLabels, aioTableData } from 'src/static-data/aio-table-data';
-import { CustomerCreateUpdateComponent } from '../../pages/apps/aio-table/customer-create-update/customer-create-update.component';
-import { Customer } from '../../pages/apps/aio-table/interfaces/customer.model';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions } from '@angular/material/form-field';
-import { fadeInUp400ms } from 'src/@vex/animations/fade-in-up.animation';
-import { stagger40ms } from 'src/@vex/animations/stagger.animation';
+import { aioTableLabels, aioTableData } from '../../../../static-data/aio-table-data';
+import { CustomerCreateUpdateComponent } from '../../../pages/apps/aio-table/customer-create-update/customer-create-update.component';
+import { Customer } from '../../../pages/apps/aio-table/interfaces/customer.model';
 
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions } from '@angular/material/form-field';
+import { fadeInUp400ms } from '../../../../@vex/animations/fade-in-up.animation';
+import { stagger40ms } from '../../../../@vex/animations/stagger.animation';
+import { ProductService } from 'src/app/services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'vex-shipments',
@@ -37,6 +39,7 @@ import { stagger40ms } from 'src/@vex/animations/stagger.animation';
   ]
 })
 export class ShipmentsComponent {
+shipments = []
 
   // tableColumns: TableColumn<Order>[] = [
   //   {
@@ -126,16 +129,7 @@ export class ShipmentsComponent {
     { label: 'SKU', property: 'sku', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
     { label: 'Description', property: 'description', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
     { label: 'Category', property: 'category', type: 'text', visible: true, cssClasses: ['text-secondary', 'font-medium'] },
-    { label: 'Name', property: 'name', type: 'text', visible: false, cssClasses: ['font-medium'] },
-    { label: 'First Name', property: 'firstName', type: 'text', visible: false },
-    { label: 'Last Name', property: 'lastName', type: 'text', visible: false },
     { label: 'Contact', property: 'contact', type: 'button', visible: false },
-    { label: 'Address', property: 'address', type: 'text', visible: false, cssClasses: ['text-secondary', 'font-medium'] },
-    { label: 'Street', property: 'street', type: 'text', visible: false, cssClasses: ['text-secondary', 'font-medium'] },
-    { label: 'Zipcode', property: 'zipcode', type: 'text', visible: false, cssClasses: ['text-secondary', 'font-medium'] },
-    { label: 'City', property: 'city', type: 'text', visible: false, cssClasses: ['text-secondary', 'font-medium'] },
-    { label: 'Phone', property: 'phoneNumber', type: 'text', visible: false, cssClasses: ['text-secondary', 'font-medium'] },
-    { label: 'Labels', property: 'labels', type: 'button', visible: true },
     { label: 'Actions', property: 'actions', type: 'button', visible: true }
   ];
   pageSize = 10;
@@ -149,7 +143,7 @@ export class ShipmentsComponent {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog,private pr:ProductService,private router: Router,) {
   }
 
   get visibleColumns() {
@@ -165,17 +159,23 @@ export class ShipmentsComponent {
   }
 
   ngOnInit() {
-    this.getData().subscribe(customers => {
-      this.subject$.next(customers);
+    this.pr.getShipment().subscribe((res) => {
+      console.log(res.data.fieldData.fieldData);
+      this.shipments = res.data.fieldData.fieldData;
+      this.dataSource.data = this.shipments;
+      localStorage.setItem("shipments",JSON.stringify(this.shipments))
     });
-
+    
+    this.getData().subscribe(customers => {
+      this.customers = customers;
+    });
+    
     this.dataSource = new MatTableDataSource();
-
+    
     this.data$.pipe(
       filter<Customer[]>(Boolean)
     ).subscribe(customers => {
       this.customers = customers;
-      this.dataSource.data = customers;
     });
 
     this.searchCtrl.valueChanges.pipe(
@@ -279,7 +279,10 @@ export class ShipmentsComponent {
     this.customers[index].labels = change.value;
     this.subject$.next(this.customers);
   }
-
+  shipmentDetails(id){
+    const url = `pages/shipments/${id}`;
+    location.href = url;
+  }
 }
 
 

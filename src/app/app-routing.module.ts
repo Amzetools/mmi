@@ -147,6 +147,14 @@ const routes: VexRoutes = [
             loadChildren: () => import('./pages/user/user-release/user-release/user-release.module').then(m => m.UserReleaseModule)
           },
           {
+            path: 'shipments',
+            loadChildren: () => import('./pages/user/shipments/shipments.module').then(m => m.ShipmentsModule)
+          },
+          {
+            path: 'shipments/:id',
+            loadChildren: () => import('./pages/user/shipments/delivery-details/delivery-details/delivery-details.module').then(m => m.DeliveryDetailsModule)
+          },
+          {
             path: 'pricing',
             loadChildren: () => import('./pages/pages/pricing/pricing.module').then(m => m.PricingModule)
           },

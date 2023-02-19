@@ -11,11 +11,12 @@ export class ProductService {
 
   getProducts(): Observable<any> {
       this.userId = localStorage.getItem("UserId")
-      return this.http.get<any>(`${env.baseUrl}/Customers/RelatedProducts?userId=${this.userId}`)    
+      // return this.http.get<any>(`${env.baseUrl}/Customers/RelatedProducts?userId=${this.userId}`)    
+      return this.http.get<any>(`${env.baseUrl}/Customers/RelatedProducts?userId=4`)    
   }
-  getSingleProduct(idProduct): Observable<any> {
+  getSingleProduct(sku): Observable<any> {
     this.userId = localStorage.getItem("UserId")
-    return this.http.get<any>(`${env.baseUrl}/Products/GetProduct?userId=${this.userId}&productId=${idProduct}`)
+    return this.http.get<any>(`${env.baseUrl}/Products/FindProduct?sku=${sku}`)
   }
   getShipment(){
     this.userId = localStorage.getItem("UserId")

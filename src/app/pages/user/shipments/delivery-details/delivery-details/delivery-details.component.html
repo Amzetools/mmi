@@ -1,126 +1,154 @@
 <vex-secondary-toolbar current="Delivery Details">
-  <vex-breadcrumbs [crumbs]="['Dashboards', 'Delivery Details']" class="flex-auto"></vex-breadcrumbs>
-
-  <button class="ml-2" color="primary" mat-icon-button type="button">
+    <vex-breadcrumbs [crumbs]="['Dashboards', 'Delivery Details']" class="flex-auto"></vex-breadcrumbs>
+  
+    <button class="ml-2" color="primary" mat-icon-button type="button">
       <mat-icon svgIcon="mat:more_vert"></mat-icon>
-  </button>
-</vex-secondary-toolbar>
-
-<!-- Basic Details Start -->
-<div class="container p-gutter grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 pt-0">
-
-  <div class="mt-6 flex flex-col md:flex-row md:items-start">
+    </button>
+  </vex-secondary-toolbar>
+  
+  <!-- Basic Details Start -->
+  <div class="container p-gutter grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4 pt-0">
+  
+    <div class="mt-6 flex flex-col md:flex-row md:items-start">
       <!-- Delivery Details -->
       <div class="flex-auto">
-          <div class="card">
-              <div class="px-gutter py-4 border-b">
-                  <h2 class="title m-0">Delivery Details</h2>
-              </div>
-
-              <div class="px-gutter py-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div class="py-3 flex items-center">
-                    <div @scaleIn
-                        class="w-10 h-10 rounded-full bg-primary/10 text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
-                        <mat-icon class="icon-sm" svgIcon="mat:person"></mat-icon>
-                    </div>
-
-                    <div @fadeInRight>
-                        <p class="m-0 body-1">Mr John</p>
-                        <p class="m-0 caption text-hint">Contact Person Name</p>
-                    </div>
-                  </div>
-
-                  <div class="py-3 flex items-center">
-                      <div @scaleIn
-                          class="w-10 h-10 rounded-full bg-primary/10 text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
-                          <mat-icon class="icon-sm" svgIcon="mat:phone"></mat-icon>
-                      </div>
-
-                      <div @fadeInRight>
-                          <p class="m-0 body-1">+21 (988) 504-2559</p>
-                          <p class="m-0 caption text-hint">Contact Number</p>
-                      </div>
-                  </div>
-
-
-                  <div class="py-3 flex items-center">
-                      <div @scaleIn
-                          class="w-10 h-10 rounded-full bg-primary/10 text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
-                          <mat-icon class="icon-sm" svgIcon="mat:email"></mat-icon>
-                      </div>
-
-                      <div @fadeInRight>
-                          <p class="m-0 body-1">demo@gmail.com</p>
-                          <p class="m-0 caption text-hint">Email</p>
-                      </div>
-                  </div>
-
-                  <div class="py-3 flex items-center">
-                      <div @scaleIn
-                          class="w-10 h-10 rounded-full bg-primary/10 text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
-                          <mat-icon class="icon-sm" svgIcon="mat:business"></mat-icon>
-                      </div>
-
-                      <div @fadeInRight>
-                          <p class="m-0 body-1">Amazon</p>
-                          <p class="m-0 caption text-hint">Company</p>
-                      </div>
-                  </div>
-
-                  <div class="py-3 flex items-center">
-                    <div @scaleIn
-                        class="w-10 h-10 rounded-full bg-primary/10 text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
-                        <mat-icon class="icon-sm" svgIcon="mat:location_city"></mat-icon>
-                    </div>
-
-                    <div @fadeInRight>
-                        <p class="m-0 body-1">Amazon</p>
-                        <p class="m-0 caption text-hint">City and State</p>
-                    </div>
-                </div>
-
-                <div class="py-3 flex items-center">
-                  <div @scaleIn
-                      class="w-10 h-10 rounded-full bg-primary/10 text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
-                      <mat-icon class="icon-sm" svgIcon="mat:contact_support"></mat-icon>
-                  </div>
-
-                  <div @fadeInRight>
-                      <p class="m-0 body-1">87392 00</p>
-                      <p class="m-0 caption text-hint">Zip Code</p>
-                  </div>
-              </div>
-
-                  <div class="py-3 flex items-center">
-                      <div @scaleIn
-                          class="w-10 h-10 rounded-full bg-primary/10 text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
-                          <mat-icon class="icon-sm" svgIcon="mat:place"></mat-icon>
-                      </div>
-
-                      <div @fadeInRight>
-                          <p class="m-0 body-1">4455 Apple Lane, Ellisville USA</p>
-                          <p class="m-0 caption text-hint">Primary Address</p>
-                      </div>
-                  </div>
-
-                  <div class="py-3 flex items-center">
-                    <div @scaleIn
-                        class="w-10 h-10 rounded-full bg-primary/10 text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
-                        <mat-icon class="icon-sm" svgIcon="mat:place"></mat-icon>
-                    </div>
-
-                    <div @fadeInRight>
-                        <p class="m-0 body-1">Address 02: 4455 Apple Lane, Ellisville USA</p>
-                        <p class="m-0 caption text-hint">Secondary Address</p>
-                    </div>
-                </div>
-              </div>
+        <div class="card">
+          <div class="px-gutter py-4 border-b">
+            <h2 class="title m-0">Shipment Details</h2>
           </div>
+  
+          <div class="px-gutter py-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="py-3 flex items-center">
+              <div @scaleIn
+                class="w-10 h-10 rounded-full bg-primary/10 text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                <mat-icon class="icon-sm" svgIcon="mat:person"></mat-icon>
+              </div>
+  
+              <div @fadeInRight>
+                <p class="m-0 body-1">{{loopedDetails.shipping_number}}</p>
+                <p class="m-0 caption text-hint">Shipping Number</p>
+              </div>
+            </div>
+  
+            <div class="py-3 flex items-center">
+              <div @scaleIn
+                class="w-10 h-10 rounded-full bg-primary/10 text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                <mat-icon class="icon-sm" svgIcon="mat:phone"></mat-icon>
+              </div>
+  
+              <div @fadeInRight>
+                <p class="m-0 body-1">{{loopedDetails.shipto_phone}}</p>
+                <p class="m-0 caption text-hint">Ship to phone</p>
+              </div>
+            </div>
+  
+  
+            <div class="py-3 flex items-center">
+              <div @scaleIn
+                class="w-10 h-10 rounded-full bg-primary/10 text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                <mat-icon class="icon-sm" svgIcon="mat:email"></mat-icon>
+              </div>
+  
+              <div @fadeInRight>
+                <p class="m-0 body-1">{{loopedDetails.customer_c}}</p>
+                <p class="m-0 caption text-hint">Customer</p>
+              </div>
+            </div>
+  
+            <div class="py-3 flex items-center">
+              <div @scaleIn
+                class="w-10 h-10 rounded-full bg-primary/10 text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                <mat-icon class="icon-sm" svgIcon="mat:business"></mat-icon>
+              </div>
+  
+              <div @fadeInRight>
+                <p class="m-0 body-1">{{loopedDetails.contact_fullname}}</p>
+                <p class="m-0 caption text-hint">Fullname</p>
+              </div>
+            </div>
+  
+            <div class="py-3 flex items-center">
+              <div @scaleIn
+                class="w-10 h-10 rounded-full bg-primary/10 text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                <mat-icon class="icon-sm" svgIcon="mat:location_city"></mat-icon>
+              </div>
+  
+              <div @fadeInRight>
+                <p class="m-0 body-1">{{loopedDetails.shipto_address1}}</p>
+                <p class="m-0 caption text-hint">Address</p>
+              </div>
+            </div>
+  
+            <div class="py-3 flex items-center">
+              <div @scaleIn
+                class="w-10 h-10 rounded-full bg-primary/10 text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                <mat-icon class="icon-sm" svgIcon="mat:contact_support"></mat-icon>
+              </div>
+  
+              <div @fadeInRight>
+                <p class="m-0 body-1">{{loopedDetails.shipto_city}}</p>
+                <p class="m-0 caption text-hint">City</p>
+              </div>
+            </div>
+  
+            <div class="py-3 flex items-center">
+              <div @scaleIn
+                class="w-10 h-10 rounded-full bg-primary/10 text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                <mat-icon class="icon-sm" svgIcon="mat:place"></mat-icon>
+              </div>
+  
+              <div @fadeInRight>
+                <p class="m-0 body-1">{{loopedDetails.shipto_code}}</p>
+                <p class="m-0 caption text-hint">Shipping Code</p>
+              </div>
+            </div>
+  
+            <div class="py-3 flex items-center">
+              <div @scaleIn
+                class="w-10 h-10 rounded-full bg-primary/10 text-primary ltr:mr-3 rtl:ml-3 flex items-center justify-center">
+                <mat-icon class="icon-sm" svgIcon="mat:place"></mat-icon>
+              </div>
+  
+              <div @fadeInRight>
+                <p class="m-0 body-1">{{loopedDetails.shipto_country}}</p>
+                <p class="m-0 caption text-hint">Country</p>
+              </div>
+            </div>
+          </div>
+  
+          <div class="px-gutter py-4 border-b">
+            <h2 class="title m-0">Delivered Product</h2>
+          </div>
+  
+          <div class="p-gutter grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 container">
+            <div class="card overflow-hidden" *ngFor="let sku of loopedDetails.products_Shipped">
+              <!-- *ngFor="let product of products" -->
+                <div class="p-4 text-center hover:bg-hover trans-ease-out cursor-pointer relative" matRipple>
+                    <!-- Product Image -->
+                    <!-- <img src="../../../../../../assets/img/avatars/1.jpg" class="avatar h-24 w-24 mx-auto"> -->
+  
+                    <h2 class="title mb-1 mt-3">{{sku.productSku}}</h2>
+                    <div class="body-2 text-secondary flex items-center justify-center">
+                        <mat-icon class="ltr:mr-1 rtl:ml-1 icon-xs" svgIcon="mat:label"></mat-icon>
+                        <span>{{sku.unitsShipped}}</span>
+                    </div>
+  
+                    <!-- <div class="body-2 text-secondary flex items-center justify-center">
+                        <mat-icon class="ltr:mr-1 rtl:ml-1 icon-xs" svgIcon="mat:category"></mat-icon>
+                        <span>Stock: {{product.fieldData.unitsInStock}}</span>
+                    </div> -->
+                </div>
+  
+                <!-- <div class="bg-app-bar p-2 flex items-center justify-around"> -->
+                    <!-- <button color="primary"  mat-stroked-button type="button">View Product</button> -->
+                    <!-- (click)="productDetails(product.fieldData.idProduct)" -->
+                <!-- </div> -->
+            </div>
+          </div>
+        </div>
       </div>
-
+  
+    </div>
+  
   </div>
-
-</div>
-<!-- Basic Details End -->
-
-
+  <!-- Basic Details End -->
