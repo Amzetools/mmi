@@ -52,22 +52,20 @@
     <th>Action</th>
   </tr>
   <tr class="text-center h-10 border-t-2 border-gray-100" *ngFor="let product of products">
-    <td class="flex justify-center "><img src="{{product.fieldData.image}}" alt="Image"
+    <td class="flex justify-center "><img src="{{product.image}}" alt="Image"
       class="h-10 w-10 mt-2 rounded-full "
       /></td>
     <td class="w-20 " style="white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;">{{product.fieldData.description}}</td>
-    <td>{{product.fieldData.unitsInStock}}</td>
-    <td>{{product.fieldData.idProduct}}</td>
+    text-overflow: ellipsis;">{{product.description}}</td>
+    <td>{{product.unitsInStock}}</td>
+    <td>{{product.idProduct}}</td>
     <td><button mat-button [matMenuTriggerFor]="menu">View</button></td>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="viewProduct(product.fieldData.idProduct)">
+      <button mat-menu-item (click)="viewProduct(product.sku)">
         <span>View Product</span>
       </button>
-      <button mat-menu-item disabled>
-        <span>Release</span>
-      </button>
+
     </mat-menu>
   </tr>
 

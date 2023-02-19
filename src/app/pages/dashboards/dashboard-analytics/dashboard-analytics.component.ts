@@ -70,9 +70,10 @@ export class DashboardAnalyticsComponent {
  
    ngOnInit(){
     this.productService.getProducts().subscribe((res) => {
-      this.products = res.data
-      console.log(this.products)
-      this.productCount = res.data.length
+      this.products = res.data.fieldData
+      console.log(this.products,
+        "here")
+      this.productCount = res.data.totalCount
       console.log(res.data.length)
     })
    }
