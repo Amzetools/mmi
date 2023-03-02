@@ -137,6 +137,7 @@ shipments = []
   dataSource: MatTableDataSource<Customer> | null;
   selection = new SelectionModel<Customer>(true, []);
   searchCtrl = new UntypedFormControl();
+  filteredShipments = [];
 
   labels = aioTableLabels;
 
@@ -144,6 +145,18 @@ shipments = []
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private dialog: MatDialog,private pr:ProductService,private router: Router,) {
+    this.searchCtrl.valueChanges.subscribe(searchText => {
+      if (searchText.trim() === '') {
+        this.filteredShipments = this.shipments;
+      } else {
+        this.filteredShipments = this.shipments.filter(shipment =>
+          shipment.shipping_number.includes(searchText) ||
+          shipment.customer_c.includes(searchText) ||
+          shipment.shipto_phone.includes(searchText) ||
+          shipment.shipto_code.includes(searchText)
+        );
+      }
+    });
   }
 
   get visibleColumns() {
@@ -163,6 +176,7 @@ shipments = []
       console.log(res.data.fieldData.fieldData);
       this.shipments = res.data.fieldData.fieldData;
       this.dataSource.data = this.shipments;
+      this.filteredShipments = this.shipments
       localStorage.setItem("shipments",JSON.stringify(this.shipments))
     });
     

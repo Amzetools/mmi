@@ -49,7 +49,7 @@
       <th>Shipping code</th>
       <th>Action</th>
     </tr>
-    <tr class="text-center h-10 border-t-2 border-gray-100" *ngFor="let shipment of shipments">
+    <tr class="text-center h-10 border-t-2 border-gray-100" *ngFor="let shipment of filteredShipments">
       <td class="flex justify-center ">
         {{shipment.shipping_number}}
       </td>
